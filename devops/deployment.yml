@@ -5,6 +5,8 @@ metadata:
   labels:
     name: hazelcast
 spec:
+  replicas: 1
+  revisionHistoryLimit: 1
   template:
     metadata:
       labels:
@@ -12,11 +14,15 @@ spec:
     spec:
       containers:
       - name: hazelcast
-        image: mwronski/kubernetes-hazelcast:0.0.1
+        image: mwrona/kubernetes-hazelcast:0.0.1
         imagePullPolicy: Always
         env:
-        - name: "DNS_DOMAIN"
-          value: "cluster.local"
+          - name: "group.name"
+            value: "k8s"
+          - name: "group.password"
+            value: "k8s"
+          - name: "JAVA_OPTS"
+            value: "-Xmx512m"
         ports:
         - name: hazelcast
           containerPort: 5701

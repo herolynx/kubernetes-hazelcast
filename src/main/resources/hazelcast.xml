@@ -11,17 +11,11 @@
         <password>${group.password}</password>
     </group>
 
-    <map name="user-session">
-        <time-to-live-seconds>604800</time-to-live-seconds>
-        <max-idle-seconds>0</max-idle-seconds>
-        <eviction-policy>LRU</eviction-policy>
-    </map>
-
     <network>
         <join>
             <!-- deactivate normal discovery -->
             <multicast enabled="false"/>
-            <tcp-ip enabled="false" />
+            <tcp-ip enabled="false"/>
 
             <!-- activate the Kubernetes plugin -->
             <discovery-strategies>
@@ -30,7 +24,7 @@
 
                     <properties>
                         <!-- configure discovery service API lookup -->
-                        <property name="service-dns">MY-SERVICE-DNS-NAME</property>
+                        <property name="service-dns">hazelcast</property>
                         <property name="service-dns-timeout">10</property>
                     </properties>
                 </discovery-strategy>

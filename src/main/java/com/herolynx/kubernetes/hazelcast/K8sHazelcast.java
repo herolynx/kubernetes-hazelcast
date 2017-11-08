@@ -4,7 +4,7 @@ import com.hazelcast.core.Hazelcast;
 
 public class K8sHazelcast {
 
-    public static void main(String...args) {
+    public static void main(String... args) {
         Hazelcast.newHazelcastInstance();
     }
 

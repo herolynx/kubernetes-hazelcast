@@ -17,8 +17,8 @@ public class K8sHazelcastPerfTest {
     @BeforeClass
     public static void setUp() {
         ClientConfig clientConfig = new ClientConfig();
-        clientConfig.setCredentials(new UsernamePasswordCredentials("huuuge-cache", "huuuge"));
-//        clientConfig.setCredentials(new UsernamePasswordCredentials("k8s", "k8s"));
+//        clientConfig.setCredentials(new UsernamePasswordCredentials("huuuge-cache", "huuuge"));
+        clientConfig.setCredentials(new UsernamePasswordCredentials("k8s", "k8s"));
         client = HazelcastClient.newHazelcastClient(clientConfig);
     }
 
@@ -38,7 +38,7 @@ public class K8sHazelcastPerfTest {
     public void shouldPutData() {
         IMap<String, String> map = client.getMap("k8s-perf-test");
         for (int i = 0; i < 1000; i++) {
-            map.set("k8s-" + 0, "works");
+            map.set("k8s-" + i, "works");
         }
     }
 
@@ -46,7 +46,7 @@ public class K8sHazelcastPerfTest {
     public void shouldReadPutData() {
         IMap<String, String> map = client.getMap("k8s-perf-test");
         for (int i = 0; i < 1000; i++) {
-            assertThat(map.get("k8s-" + 0), is("works"));
+            assertThat(map.get("k8s-" + i), is("works"));
         }
     }
 
