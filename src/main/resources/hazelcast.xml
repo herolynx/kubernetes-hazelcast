@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast
+        xsi:schemaLocation="http://www.hazelcast.com/schema/config http://www.hazelcast.com/schema/config/hazelcast-config-3.8.xsd"
+        xmlns="http://www.hazelcast.com/schema/config"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <!-- properties will be passed via -D... JAVA_OPTS -->
+    <!-- see hazelcast.yml -->
+    <group>
+        <name>${group.name}</name>
+        <password>${group.password}</password>
+    </group>
+
+    <map name="user-session">
+        <time-to-live-seconds>604800</time-to-live-seconds>
+        <max-idle-seconds>0</max-idle-seconds>
+        <eviction-policy>LRU</eviction-policy>
+    </map>
+
+    <network>
+        <join>
+            <!-- deactivate normal discovery -->
+            <multicast enabled="false"/>
+            <tcp-ip enabled="false" />
+
+            <!-- activate the Kubernetes plugin -->
+            <discovery-strategies>
+                <discovery-strategy enabled="true"
+                                    class="com.hazelcast.kubernetes.HazelcastKubernetesDiscoveryStrategy">
+
+                    <properties>
+                        <!-- configure discovery service API lookup -->
+                        <property name="service-dns">MY-SERVICE-DNS-NAME</property>
+                        <property name="service-dns-timeout">10</property>
+                    </properties>
+                </discovery-strategy>
+            </discovery-strategies>
+        </join>
+    </network>
+
+</hazelcast>
