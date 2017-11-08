@@ -17,9 +17,9 @@ spec:
         image: mwrona/kubernetes-hazelcast:0.0.1
         imagePullPolicy: Always
         env:
-          - name: "group.name"
+          - name: "GROUP_NAME"
             value: "k8s"
-          - name: "group.password"
+          - name: "GROUP_PASSWORD"
             value: "k8s"
           - name: "JAVA_OPTS"
             value: "-Xmx512m"
