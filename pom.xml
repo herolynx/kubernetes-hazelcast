@@ -32,6 +32,12 @@
         </dependency>
         <!-- TESTS -->
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast-client</artifactId>
             <version>3.8.6</version>

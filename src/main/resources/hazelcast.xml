@@ -24,8 +24,7 @@
 
                     <properties>
                         <!-- configure discovery service API lookup -->
-                        <property name="service-dns">hazelcast</property>
-                        <property name="service-dns-timeout">10</property>
+                        <property name="service-name">hazelcast</property>
                     </properties>
                 </discovery-strategy>
             </discovery-strategies>

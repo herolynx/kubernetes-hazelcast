@@ -1,5 +1,6 @@
 package com.herolynx.kubernetes.hazelcast;
 
+import com.google.common.collect.ImmutableList;
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.core.HazelcastInstance;
@@ -17,8 +18,11 @@ public class K8sHazelcastPerfTest {
     @BeforeClass
     public static void setUp() {
         ClientConfig clientConfig = new ClientConfig();
+//        clientConfig.getGroupConfig().setName("k8");
+//        clientConfig.getGroupConfig().setPassword("k8");
 //        clientConfig.setCredentials(new UsernamePasswordCredentials("huuuge-cache", "huuuge"));
         clientConfig.setCredentials(new UsernamePasswordCredentials("k8s", "k8s"));
+        clientConfig.getNetworkConfig().setAddresses(ImmutableList.<String>of("192.168.99.100:30491"));
         client = HazelcastClient.newHazelcastClient(clientConfig);
     }
 
