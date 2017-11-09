@@ -1,5 +1,5 @@
 FROM openjdk:8-jre-alpine
-ADD kubernetes-hazelcast-*-jar-with-dependencies.jar /app.jar
+ADD *.jar /app.jar
 
 EXPOSE 5701
 EXPOSE 8080

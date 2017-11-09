@@ -24,3 +24,4 @@ target
 hs_err_pida*
 .idea
 *.iml
+dependency-reduced-pom.xml
